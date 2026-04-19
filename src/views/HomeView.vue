@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useProducts } from '@/composables/useProducts'
+import ProductCard from '@/components/ProductCard.vue'
+
 
 const { loading, error, search, selectedCategory, categories, filteredProducts, fetchProducts } =
   useProducts()
@@ -11,7 +13,7 @@ onMounted(fetchProducts)
 <template>
   <div class="min-h-screen bg-gray-50">
     <div class="max-w-6xl mx-auto p-4">
-      <h1 class="text-2xl font-bold mb-4">E-Commerce Store</h1>
+      <h1 class="text-2xl font-bold mb-4">Explore Our Products</h1>
 
       <div class="flex flex-col sm:flex-row gap-3 mb-6">
         <input
@@ -30,19 +32,11 @@ onMounted(fetchProducts)
       <p v-else-if="error" class="text-red-600">Error: {{ error }}</p>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div
-          v-for="p in filteredProducts"
-          :key="p.id"
-          class="bg-white rounded-lg shadow p-4 hover:shadow-md transition"
-        >
-          <img :src="p.thumbnail" :alt="p.title" class="w-full h-40 object-cover rounded" />
-          <h2 class="font-semibold mt-2">{{ p.title }}</h2>
-          <p class="text-sm text-gray-500 line-clamp-2">{{ p.description }}</p>
-          <div class="mt-2 flex items-center justify-between">
-            <span class="font-bold">${{ p.price }}</span>
-            <span class="text-sm text-gray-500">{{ p.category }}</span>
-          </div>
-        </div>
+        <ProductCard
+            v-for="p in filteredProducts"
+            :key="p.id"
+            :product="p"
+        />
       </div>
     </div>
   </div>
