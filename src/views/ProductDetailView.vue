@@ -2,7 +2,9 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Product } from '@/types/Product'
+import { useCartStore } from '@/stores/cart'
 
+const cart = useCartStore()
 const route = useRoute()
 const product = ref<Product | null>(null)
 const loading = ref(false)
@@ -38,6 +40,12 @@ onMounted(fetchProduct)
       <div class="mt-4 text-xl font-semibold">
         ${{ product.price }}
       </div>
+      <button
+        class="mt-4 px-4 py-2 rounded bg-black text-white hover:opacity-90"
+        @click="cart.addToCart(product)"
+      >
+        Add to Cart
+      </button>
     </div>
   </div>
 </template>
