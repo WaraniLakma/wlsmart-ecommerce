@@ -41,7 +41,13 @@ onMounted(fetchProduct)
     <div v-else-if="error" class="text-red-600">Error: {{ error }}</div>
 
     <div v-else-if="product" class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-      <img :src="product.thumbnail" :alt="product.title" class="w-full h-64 object-cover rounded" />
+      <div class="flex justify-center">
+        <img
+          :src="product.thumbnail"
+          :alt="product.title"
+          class="w-64 h-auto object-cover rounded-lg shadow"
+        />
+      </div>
 
       <h1 class="text-2xl font-bold mt-4">{{ product.title }}</h1>
       <p class="text-gray-600 dark:text-gray-300 mt-2">{{ product.description }}</p>
