@@ -11,7 +11,7 @@ onMounted(fetchProducts)
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
     <div class="max-w-6xl mx-auto p-4">
       <h1 class="text-2xl font-bold mb-4">Explore Our Products</h1>
 
@@ -20,10 +20,13 @@ onMounted(fetchProducts)
           v-model="search"
           type="text"
           placeholder="Search products..."
-          class="w-full sm:w-2/3 px-3 py-2 rounded border"
+          class="w-full sm:w-2/3 px-3 py-2 rounded border bg-white text-black
+       dark:bg-gray-800 dark:text-white dark:border-gray-700
+       placeholder:text-gray-400 dark:placeholder:text-gray-400"
         />
 
-        <select v-model="selectedCategory" class="w-full sm:w-1/3 px-3 py-2 rounded border">
+        <select v-model="selectedCategory" class="w-full sm:w-1/3 px-3 py-2 rounded border bg-white text-black
+       dark:bg-gray-800 dark:text-white dark:border-gray-700">
           <option v-for="c in categories" :key="c" :value="c">{{ c }}</option>
         </select>
       </div>

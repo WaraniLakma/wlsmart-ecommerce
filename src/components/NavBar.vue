@@ -34,7 +34,7 @@ const { theme, toggle } = useTheme()
 
         <button
             v-else
-            class="px-3 py-1 rounded border hover:bg-gray-100"
+            class="px-3 py-1 rounded border hover:bg-gray-100 dark:hover:bg-gray-800"
             @click="auth.logout()"
         >
             Logout

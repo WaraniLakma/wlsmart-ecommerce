@@ -16,21 +16,21 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 p-6">
-    <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6">
-      <h1 class="text-2xl font-bold mb-4">Login</h1>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+    <div class="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
 
       <label class="block mb-2 text-sm">Username</label>
       <input
         v-model="username"
-        class="w-full px-3 py-2 rounded border bg-white text-black"
+        class="w-full px-3 py-2 rounded border bg-white text-black dark:bg-gray-800 dark:text-white dark:border-gray-700"
       />
 
       <label class="block mt-4 mb-2 text-sm">Password</label>
       <input
         v-model="password"
         type="password"
-        class="w-full px-3 py-2 rounded border bg-white text-black"
+        class="w-full px-3 py-2 rounded border bg-white text-black dark:bg-gray-800 dark:text-white dark:border-gray-700"
       />
 
       <p v-if="auth.error" class="mt-3 text-red-600">{{ auth.error }}</p>
@@ -43,8 +43,8 @@ const submit = async () => {
         {{ auth.loading ? 'Logging in...' : 'Login' }}
       </button>
 
-      <p class="mt-4 text-xs text-gray-500">
-        (DummyJSON demo) Default filled credentials can be changed.
+      <p class="mt-4 text-center text-gray-500 dark:text-gray-300">
+        Please enter your credentials to login.
       </p>
     </div>
   </div>

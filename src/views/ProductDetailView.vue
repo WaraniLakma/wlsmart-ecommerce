@@ -36,15 +36,15 @@ onMounted(fetchProduct)
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 p-6">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
     <div v-if="loading">Loading...</div>
     <div v-else-if="error" class="text-red-600">Error: {{ error }}</div>
 
-    <div v-else-if="product" class="max-w-4xl mx-auto bg-white rounded-lg shadow p-6">
+    <div v-else-if="product" class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow p-6">
       <img :src="product.thumbnail" :alt="product.title" class="w-full h-64 object-cover rounded" />
 
       <h1 class="text-2xl font-bold mt-4">{{ product.title }}</h1>
-      <p class="text-gray-600 mt-2">{{ product.description }}</p>
+      <p class="text-gray-600 dark:text-gray-300 mt-2">{{ product.description }}</p>
 
       <div class="mt-4 text-xl font-semibold">${{ product.price }}</div>
 
