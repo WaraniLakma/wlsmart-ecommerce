@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
+import { useAuthStore } from '@/stores/auth'
 
+const auth = useAuthStore()
 const cart = useCartStore()
 </script>
 
@@ -24,6 +26,17 @@ const cart = useCartStore()
             {{ cart.totalItems }}
           </span>
         </RouterLink>
+        <RouterLink v-if="!auth.isLoggedIn" to="/login" class="hover:underline">
+            Login
+        </RouterLink>
+
+        <button
+            v-else
+            class="px-3 py-1 rounded border hover:bg-gray-100"
+            @click="auth.logout()"
+        >
+            Logout
+        </button>
       </nav>
     </div>
   </header>
