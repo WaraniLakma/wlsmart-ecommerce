@@ -2,9 +2,11 @@
 import { RouterLink } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
 import { useAuthStore } from '@/stores/auth'
+import { useTheme } from '@/composables/useTheme'
 
-const auth = useAuthStore()
 const cart = useCartStore()
+const auth = useAuthStore()
+const { theme, toggle } = useTheme()
 </script>
 
 <template>
@@ -36,6 +38,19 @@ const cart = useCartStore()
             @click="auth.logout()"
         >
             Logout
+        </button>
+        <button
+            @click="toggle"
+            class="relative w-16 h-8 rounded-full border border-white/70 transition-colors duration-300"
+            :class="theme === 'dark' ? 'bg-gray-900' : 'bg-white/20'"
+            aria-label="Toggle theme"
+        >
+            <span
+                class="absolute top-1 left-1 w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 bg-white text-black"
+                :class="theme === 'dark' ? 'translate-x-8' : 'translate-x-0'"
+            >
+            {{ theme === 'dark' ? '🌙' : '☀️' }}
+            </span>
         </button>
       </nav>
     </div>
