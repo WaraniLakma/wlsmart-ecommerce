@@ -7,9 +7,18 @@ const cart = useCartStore()
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-2xl font-bold mb-4 text-black dark:text-white">Cart</h1>
+      
+      <div v-if="cart.items.length === 0" class="flex flex-col items-center justify-center py-24">
+        <img
+            src="/empty-cart.png"
+            alt="Empty cart"
+            class="w-48 h-auto mb-6"
+        />
 
-      <p v-if="cart.items.length === 0" class="text-gray-600">Your cart is empty.</p>
+        <p class="text-2xl font-bold text-gray-700 dark:text-gray-200">
+        Your cart is empty.
+        </p>
+      </div>
 
       <div v-else class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 space-y-4">
         <div
